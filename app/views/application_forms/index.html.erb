@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Application Forms</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Address</th>
+      <th>References</th>
+      <th>Graduation year</th>
+      <th>References</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @application_forms.each do |application_form| %>
+      <tr>
+        <td><%= application_form.address %></td>
+        <td><%= application_form.references %></td>
+        <td><%= application_form.graduation_year %></td>
+        <td><%= application_form.references %></td>
+        <td><%= link_to 'Show', application_form %></td>
+        <td><%= link_to 'Edit', edit_application_form_path(application_form) %></td>
+        <td><%= link_to 'Destroy', application_form, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Application Form', new_application_form_path %>

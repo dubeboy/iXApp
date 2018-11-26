@@ -1,0 +1,37 @@
+<%= form_for new_student_application_forms_path(1), local: true do |form| %>
+  <% if application_form.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(application_form.errors.count, "error") %> prohibited this application_form from being saved:</h2>
+
+      <ul>
+      <% application_form.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :address %>
+    <%= form.text_field :address %>
+  </div>
+
+  <div class="field">
+    <%= form.label :references %>
+    <%= form.text_field :references %>
+  </div>
+
+  <div class="field">
+    <%= form.label :graduation_year %>
+    <%= form.text_field :graduation_year %>
+  </div>
+
+  <div class="field">
+    <%= form.label :references %>
+    <%= form.text_field :references %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

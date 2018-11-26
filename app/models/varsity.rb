@@ -1,0 +1,2 @@
+class Varsity < ApplicationRecord
+end
