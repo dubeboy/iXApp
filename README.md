@@ -2,12 +2,12 @@
 
 This is the iX interview application, which allows students to register and also apply for courses at iX
 
-##setup
+## setup
 The setup is easy you will need:
 * Git
 * ruby 2.5.3 
 
-##steps to run application
+## steps to run application
 _You will need to have installed Ruby and Git to continue, don`t forget to configure Git_
 
 1. open terminal or command prompt on windows 
