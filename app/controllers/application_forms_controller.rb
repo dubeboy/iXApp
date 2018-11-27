@@ -1,5 +1,6 @@
 class ApplicationFormsController < ApplicationController
   before_action :authenticate_student!
+  before_action :get_varsities, only: [:new, :edit]
   before_action :set_application_form, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -20,7 +21,6 @@ class ApplicationFormsController < ApplicationController
   # GET /application_forms/new
   def new
     @application_form = ApplicationForm.new
-    @varsities = Varsity.all
   end
 
   # GET /application_forms/1/edit
@@ -79,5 +79,9 @@ class ApplicationFormsController < ApplicationController
     puts params
     puts "----------------------------"
     params.require(:application_form).permit(:address, :varsity_id, :graduation_year, :student_id)
+  end
+
+  def get_varsities
+    @varsities = Varsity.all
   end
 end

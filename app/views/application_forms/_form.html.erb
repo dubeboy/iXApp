@@ -1,12 +1,12 @@
-<%= form_for new_student_application_forms_path(1), local: true do |form| %>
-  <% if application_form.errors.any? %>
+<%= form_with url: student_application_forms_path, local: true do |form| %>
+  <% if @application_form.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(application_form.errors.count, "error") %> prohibited this application_form from being saved:</h2>
+      <h2><%= pluralize(@application_form.errors.count, "error") %> prohibited this application_form from being saved:</h2>
 
       <ul>
-      <% application_form.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+        <% @application_form.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
@@ -17,18 +17,13 @@
   </div>
 
   <div class="field">
-    <%= form.label :references %>
-    <%= form.text_field :references %>
+    <%= form.label "University" %>
+    <%= form.select "varsity_id",  options_from_collection_for_select(@varsities, "id", "name", "1") %>
   </div>
 
   <div class="field">
     <%= form.label :graduation_year %>
-    <%= form.text_field :graduation_year %>
-  </div>
-
-  <div class="field">
-    <%= form.label :references %>
-    <%= form.text_field :references %>
+    <%= form.number_field :graduation_year %>
   </div>
 
   <div class="actions">
