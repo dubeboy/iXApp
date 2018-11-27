@@ -1,24 +1,21 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is the iX interview application, which allows students to register and also apply for courses at iX
 
-Things you may want to cover:
+#setup
+The setup is easy you will need:
+* Git
+* ruby 2.5.3 
 
-* Ruby version
+#steps to run application
+_you will need to have installed ruby and git to continue don`t forget to configure git_
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+1. open terminal or command prompt on windows 
+2. run `gem install bundler`
+3. clone the project by using `git clone https://github.com/dubeboy/iXApp`
+4. install the required libraries by:   
+   1. change directory to the root of application that was just cloned from github
+   2. run `bundle install`
+5. start the application by running `rails start`
+6. open your browser and then navigate to `localhost:3000`
+    

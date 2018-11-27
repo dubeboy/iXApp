@@ -17,12 +17,11 @@
     <% @application_forms.each do |application_form| %>
       <tr>
         <td><%= application_form.address %></td>
-        <td><%= application_form.references %></td>
+        <td><%= application_form.varsity_id %></td>
         <td><%= application_form.graduation_year %></td>
-        <td><%= application_form.references %></td>
-        <td><%= link_to 'Show', application_form %></td>
-        <td><%= link_to 'Edit', edit_application_form_path(application_form) %></td>
-        <td><%= link_to 'Destroy', application_form, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', student_application_form_path(id: application_form.id) %></td>
+        <td><%= link_to 'Edit', edit_student_application_form_path(id: application_form.id) %></td>
+        <td><%= link_to 'Destroy', [current_student, application_form], method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -30,4 +29,4 @@
 
 <br>
 
-<%= link_to 'New Application Form', new_application_form_path %>
+<%= link_to 'New Application Form', new_student_application_form_path %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_26_144910) do
+ActiveRecord::Schema.define(version: 2018_11_27_074544) do
 
   create_table "application_forms", force: :cascade do |t|
     t.string "address"
@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 2018_11_26_144910) do
     t.integer "student_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["student_id"], name: "index_application_forms_on_student_id"
+    t.index ["student_id"], name: "index_application_forms_on_student_id", unique: true
     t.index ["varsity_id"], name: "index_application_forms_on_varsity_id"
   end
 

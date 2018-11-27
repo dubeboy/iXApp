@@ -10,9 +10,9 @@ class ApplicationFormsController < ApplicationController
   # GET /application_forms/1
   # GET /application_forms/1.json
   def show
-    @application_form = current_student.application_form
+    @application_form = ApplicationForm.where("student_id=?", current_student.id)
 
-    if @application_form.nil?
+    if @application_form.empty?
       redirect_to new_student_application_forms_path
     end
 
@@ -36,7 +36,7 @@ class ApplicationFormsController < ApplicationController
                                             student_id: params[:student_id])
 
     if @application_form.save
-      redirect_to root_path, notice: 'Application form was successfully created.'
+      redirect_to student_application_forms_path, notice: 'Application form was successfully created.'
     else
       render :new
     end
@@ -45,14 +45,10 @@ class ApplicationFormsController < ApplicationController
   # PATCH/PUT /application_forms/1
   # PATCH/PUT /application_forms/1.json
   def update
-    respond_to do |format|
-      if @application_form.update(application_form_params)
-        format.html {redirect_to @application_form, notice: 'Application form was successfully updated.'}
-        format.json {render :show, status: :ok, location: @application_form}
-      else
-        format.html {render :edit}
-        format.json {render json: @application_form.errors, status: :unprocessable_entity}
-      end
+    if @application_form.update(application_form_params)
+      redirect_to @application_form, notice: 'Application form was successfully updated.'
+    else
+      render :edit
     end
   end
 
@@ -60,17 +56,14 @@ class ApplicationFormsController < ApplicationController
   # DELETE /application_forms/1.json
   def destroy
     @application_form.destroy
-    respond_to do |format|
-      format.html {redirect_to application_forms_url, notice: 'Application form was successfully destroyed.'}
-      format.json {head :no_content}
-    end
+    redirect_to student_application_form_path, notice: 'Application form was successfully destroyed.'
   end
 
   private
 
   # Use callbacks to share common setup or constraints between actions.
   def set_application_form
-    @application_form = current_student.application_form
+    @application_form = ApplicationForm.find(params[:id])
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
